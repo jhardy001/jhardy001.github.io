@@ -26,10 +26,10 @@
                     <input name="food" id="getfood" type="text"><br>
                     <label for="getcolor">What is your favorite color?</label>
                     <input type="color" id="getcolor" name="color"><br>
-                    <label for="getswallow">What is your CGPA? (Don't lie. Be honest, please.)</label>
+                    <label for="getCGPA">What is your CGPA? (Don't lie. Be honest, please.)</label>
                     <input type="number" name="CGPA" id="getCGPA" min="-1" max="1" step="0.01"> <label for="getCGPA"> CGPA</label><br>
-                    <label for="didLie">Did you <em>really</em> tell the truth?</label>
-                    <select name="didYouLie" id="DidYouLie">
+                    <label for="didyouLie">Did you <em>really</em> tell the truth?</label>
+                    <select name="didYouLie" id="didyouLie">
                         <option value="">&mdash;Please choose an option&mdash;</option>
                         <option>Yes, I'm honest! </option>
                         <option>Not really... I don't know.</option>
@@ -57,15 +57,15 @@
                         <input type="checkbox" value="cats" name="animal-cats" id="getcats">
                         <label for="getcats">Cats</label>
                         <input type="checkbox" value="dogs" name="animal-dogs" id="getdogs">
-                        <label for="getcats">Dogs</label>
+                        <label for="getdogs">Dogs</label>
                         <input type="checkbox" value="pigs" name="animal-pigs" id="getpigs">
-                        <label for="getcats">Pigs</label>
+                        <label for="getpigs">Pigs</label>
                         <input type="checkbox" value="newts" name="animal-newts" id="getnewts">
-                        <label for="getcats">Newts</label>
+                        <label for="getnewts">Newts</label>
                         <input type="checkbox" value="cuddly" name="animal-cuddly" id="getcuddly">
-                        <label for="getcats">Anything cuddly!</label>
+                        <label for="getcuddly">Anything cuddly!</label>
                         <input type="checkbox" value="edible" name="animal-edible" id="getedible">
-                        <label for="getcats">Anything that goes well on a grill. >:) (how cruel)</label>
+                        <label for="getedible">Anything that goes well on a grill. >:) (how cruel)</label>
                     </p>
                 </div>
             </fieldset>
@@ -101,16 +101,16 @@
             <fieldset>
                 <legend>Jay's Questionare</legend>
                 <div>
-                    <label for="getname">What is your name?</label> 
-                    <input name="name" id="getname" type="text"><br>
-                    <label for="getfood">What is your favorite food?</label> 
-                    <input name="food" id="getfood" type="text"><br>
-                    <label for="getcolor">What is your favorite color?</label>
-                    <input type="color" id="getcolor" name="color"><br>
-                    <label for="getswallow">What is your CGPA? (Don't lie. Be honest, please.)</label>
-                    <input type="number" name="CGPA" id="getCGPA" min="-1" max="1" step="0.01"> <label for="getCGPA"> CGPA</label><br>
+                    <label for="postname">What is your name?</label> 
+                    <input name="name" id="postname" type="text"><br>
+                    <label for="postfood">What is your favorite food?</label> 
+                    <input name="food" id="postfood" type="text"><br>
+                    <label for="postcolor">What is your favorite color?</label>
+                    <input type="color" id="postcolor" name="color"><br>
+                    <label for="postCGPA">What is your CGPA? (Don't lie. Be honest, please.)</label>
+                    <input type="number" name="CGPA" id="postCGPA" min="-1" max="1" step="0.01"> <label for="postCGPA"> CGPA</label><br>
                     <label for="didLie">Did you <em>really</em> tell the truth?</label>
-                    <select name="didYouLie" id="DidYouLie">
+                    <select name="didYouLie" id="didLie">
                         <option value="">&mdash;Please choose an option&mdash;</option>
                         <option>Yes, I'm honest! </option>
                         <option>Not really... I don't know.</option>
@@ -123,53 +123,53 @@
                 <legend>More Questions&hellip;</legend>
                 <div>
                     <p>What is your graduating class?
-                        <input type="radio" id="get-2023" name="graduation" value="2023"> 
-                        <label for="get-2023">2023</label>
-                        <input type="radio" id="get-2024" name="graduation" value="2024"> 
-                        <label for="get-2024">2024</label>
-                        <input type="radio" id="get-2025" name="graduation" value="2025"> 
-                        <label for="get-2025">2025</label>
-                        <input type="radio" id="get-2026" name="graduation" value="2026"> 
-                        <label for="get-2026">2026</label>
-                        <input type="radio" id="get-5000" name="graduation" value="5000"> 
-                        <label for="get-5000">Other</label>
+                        <input type="radio" id="post-2023" name="graduation" value="2023"> 
+                        <label for="post-2023">2023</label>
+                        <input type="radio" id="post-2024" name="graduation" value="2024"> 
+                        <label for="post-2024">2024</label>
+                        <input type="radio" id="post-2025" name="graduation" value="2025"> 
+                        <label for="post-2025">2025</label>
+                        <input type="radio" id="post-2026" name="graduation" value="2026"> 
+                        <label for="post-2026">2026</label>
+                        <input type="radio" id="post-5000" name="graduation" value="5000"> 
+                        <label for="post-5000">Other</label>
                     </p>
                     <p>My favorite animal(s) include (check all that apply):<br>
-                        <input type="checkbox" value="cats" name="animal-cats" id="getcats">
-                        <label for="getcats">Cats</label>
-                        <input type="checkbox" value="dogs" name="animal-dogs" id="getdogs">
-                        <label for="getcats">Dogs</label>
-                        <input type="checkbox" value="pigs" name="animal-pigs" id="getpigs">
-                        <label for="getcats">Pigs</label>
-                        <input type="checkbox" value="newts" name="animal-newts" id="getnewts">
-                        <label for="getcats">Newts</label>
-                        <input type="checkbox" value="cuddly" name="animal-cuddly" id="getcuddly">
-                        <label for="getcats">Anything cuddly!</label>
-                        <input type="checkbox" value="edible" name="animal-edible" id="getedible">
-                        <label for="getcats">Anything that goes well on a grill. >:) (how cruel)</label>
+                        <input type="checkbox" value="cats" name="animal-cats" id="postcats">
+                        <label for="postcats">Cats</label>
+                        <input type="checkbox" value="dogs" name="animal-dogs" id="postdogs">
+                        <label for="postdogs">Dogs</label>
+                        <input type="checkbox" value="pigs" name="animal-pigs" id="postpigs">
+                        <label for="postpigs">Pigs</label>
+                        <input type="checkbox" value="newts" name="animal-newts" id="postnewts">
+                        <label for="postnewts">Newts</label>
+                        <input type="checkbox" value="cuddly" name="animal-cuddly" id="postcuddly">
+                        <label for="postcuddly">Anything cuddly!</label>
+                        <input type="checkbox" value="edible" name="animal-edible" id="postedible">
+                        <label for="postedible">Anything that goes well on a grill. >:) (how cruel)</label>
                     </p>
                 </div>
             </fieldset>
             <fieldset>
                 <legend>Assorted randommess</legend>
                 <div>
-                    <label for="gettemp">Approximate outside temperature (&deg;F):</label>
-                    <input type="range" name="temp" id="gettemp" min="30" max="110"
-                        list="templist"><br>
-                        <datalist id="templist">
+                    <label for="posttemp">Approximate outside temperature (&deg;F):</label>
+                    <input type="range" name="temp" id="posttemp" min="30" max="110"
+                        list="temppostlist"><br>
+                        <datalist id="temppostlist">
                             <option value="30"></option>
                             <option value="50"></option>
                             <option value="70"></option>
                             <option value="90"></option>
                             <option value="110"></option>
                         </datalist>
-                    <label for="getbday">Date of birth:</label>
-                    <input type="date" id="getbday" name="birthdate"><br>
-                    <label for="getpassword">The <em>super-secret</em> (never guessable) password is:</label>
-                    <input type="password" name="password" id="getpassword"><br>
+                    <label for="postbday">Date of birth:</label>
+                    <input type="date" id="postbday" name="birthdate"><br>
+                    <label for="postpassword">The <em>super-secret</em> (never guessable) password is:</label>
+                    <input type="password" name="password" id="postpassword"><br>
                     <input type="hidden" name="hidden" value="This is most often useful for communicating state between forms">
-                    <p><label for="getcomments">Any comments:</label>
-                    <textarea name="comments" id="getcomments">Type anything... literally anything...</textarea></p>
+                    <p><label for="postcomments">Any comments:</label>
+                    <textarea name="comments" id="postcomments">Type anything... literally anything...</textarea></p>
                 </div>
             </fieldset>
             <input type="submit" value="Submit"><input type="reset" value="Reset">
