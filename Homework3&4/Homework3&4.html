@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Homework 3 & 4</title>
+        <link rel="stylesheet" href="Homework3&4.css">
+        <style>
+            input {
+                background-color:lightblue;
+            }
+        </style>
+    <body>
+        <!-- TITLE -->
+        <h1 style="font-size: 30px">Homework 3 & 4</h1>
+
+        <!-- GET FORM -->
+        <h2>GET form</h2>
+        <form action="https://cs.converse.edu/CSC235/formecho.php" method="get"
+         name="getform">
+            <fieldset>
+                <legend>Jay's Questionare</legend>
+                <div>
+                    <label for="getname">What is your name?</label> 
+                    <input name="name" id="getname" type="text"><br>
+                    <label for="getfood">What is your favorite food?</label> 
+                    <input name="food" id="getfood" type="text"><br>
+                    <label for="getcolor">What is your favorite color?</label>
+                    <input type="color" id="getcolor" name="color"><br>
+                    <label for="getswallow">What is your CGPA? (Don't lie. Be honest, please.)</label>
+                    <input type="number" name="CGPA" id="getCGPA" min="-1" max="1" step="0.01"> <label for="getCGPA"> CGPA</label><br>
+                    <label for="didLie">Did you <em>really</em> tell the truth?</label>
+                    <select name="didYouLie" id="DidYouLie">
+                        <option value="">&mdash;Please choose an option&mdash;</option>
+                        <option>Yes, I'm honest! </option>
+                        <option>Not really... I don't know.</option>
+                        <option>Okay, maybe I stretched the truth a little bit.</option>
+                        <option>No, why would I tell you? lol</option>
+                    </select><br>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>More Questions&hellip;</legend>
+                <div>
+                    <p>What is your graduating class?
+                        <input type="radio" id="get-2023" name="graduation" value="2023"> 
+                        <label for="get-2023">2023</label>
+                        <input type="radio" id="get-2024" name="graduation" value="2024"> 
+                        <label for="get-2024">2024</label>
+                        <input type="radio" id="get-2025" name="graduation" value="2025"> 
+                        <label for="get-2025">2025</label>
+                        <input type="radio" id="get-2026" name="graduation" value="2026"> 
+                        <label for="get-2026">2026</label>
+                        <input type="radio" id="get-5000" name="graduation" value="5000"> 
+                        <label for="get-5000">Other</label>
+                    </p>
+                    <p>My favorite animal(s) include (check all that apply):<br>
+                        <input type="checkbox" value="cats" name="animal-cats" id="getcats">
+                        <label for="getcats">Cats</label>
+                        <input type="checkbox" value="dogs" name="animal-dogs" id="getdogs">
+                        <label for="getcats">Dogs</label>
+                        <input type="checkbox" value="pigs" name="animal-pigs" id="getpigs">
+                        <label for="getcats">Pigs</label>
+                        <input type="checkbox" value="newts" name="animal-newts" id="getnewts">
+                        <label for="getcats">Newts</label>
+                        <input type="checkbox" value="cuddly" name="animal-cuddly" id="getcuddly">
+                        <label for="getcats">Anything cuddly!</label>
+                        <input type="checkbox" value="edible" name="animal-edible" id="getedible">
+                        <label for="getcats">Anything that goes well on a grill. >:) (how cruel)</label>
+                    </p>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Assorted randommess</legend>
+                <div>
+                    <label for="gettemp">Approximate outside temperature (&deg;F):</label>
+                    <input type="range" name="temp" id="gettemp" min="30" max="110"
+                        list="templist"><br>
+                        <datalist id="templist">
+                            <option value="30"></option>
+                            <option value="50"></option>
+                            <option value="70"></option>
+                            <option value="90"></option>
+                            <option value="110"></option>
+                        </datalist>
+                    <label for="getbday">Date of birth:</label>
+                    <input type="date" id="getbday" name="birthdate"><br>
+                    <label for="getpassword">The <em>super-secret</em> (never guessable) password is:</label>
+                    <input type="password" name="password" id="getpassword"><br>
+                    <input type="hidden" name="hidden" value="This is most often useful for communicating state between forms">
+                    <p><label for="getcomments">Any comments:</label>
+                    <textarea name="comments" id="getcomments">Type anything... literally anything...</textarea></p>
+                </div>
+            </fieldset>
+            <input type="submit" value="Submit"><input type="reset" value="Reset">
+        </form>
+
+        <!-- POST FORM -->
+        <h2>POST form</h2>
+        <form action="https://cs.converse.edu/CSC235/formecho.php" method="post"
+         name="postform">
+            <fieldset>
+                <legend>Jay's Questionare</legend>
+                <div>
+                    <label for="getname">What is your name?</label> 
+                    <input name="name" id="getname" type="text"><br>
+                    <label for="getfood">What is your favorite food?</label> 
+                    <input name="food" id="getfood" type="text"><br>
+                    <label for="getcolor">What is your favorite color?</label>
+                    <input type="color" id="getcolor" name="color"><br>
+                    <label for="getswallow">What is your CGPA? (Don't lie. Be honest, please.)</label>
+                    <input type="number" name="CGPA" id="getCGPA" min="-1" max="1" step="0.01"> <label for="getCGPA"> CGPA</label><br>
+                    <label for="didLie">Did you <em>really</em> tell the truth?</label>
+                    <select name="didYouLie" id="DidYouLie">
+                        <option value="">&mdash;Please choose an option&mdash;</option>
+                        <option>Yes, I'm honest! </option>
+                        <option>Not really... I don't know.</option>
+                        <option>Okay, maybe I stretched the truth a little bit.</option>
+                        <option>No, why would I tell you? lol</option>
+                    </select><br>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>More Questions&hellip;</legend>
+                <div>
+                    <p>What is your graduating class?
+                        <input type="radio" id="get-2023" name="graduation" value="2023"> 
+                        <label for="get-2023">2023</label>
+                        <input type="radio" id="get-2024" name="graduation" value="2024"> 
+                        <label for="get-2024">2024</label>
+                        <input type="radio" id="get-2025" name="graduation" value="2025"> 
+                        <label for="get-2025">2025</label>
+                        <input type="radio" id="get-2026" name="graduation" value="2026"> 
+                        <label for="get-2026">2026</label>
+                        <input type="radio" id="get-5000" name="graduation" value="5000"> 
+                        <label for="get-5000">Other</label>
+                    </p>
+                    <p>My favorite animal(s) include (check all that apply):<br>
+                        <input type="checkbox" value="cats" name="animal-cats" id="getcats">
+                        <label for="getcats">Cats</label>
+                        <input type="checkbox" value="dogs" name="animal-dogs" id="getdogs">
+                        <label for="getcats">Dogs</label>
+                        <input type="checkbox" value="pigs" name="animal-pigs" id="getpigs">
+                        <label for="getcats">Pigs</label>
+                        <input type="checkbox" value="newts" name="animal-newts" id="getnewts">
+                        <label for="getcats">Newts</label>
+                        <input type="checkbox" value="cuddly" name="animal-cuddly" id="getcuddly">
+                        <label for="getcats">Anything cuddly!</label>
+                        <input type="checkbox" value="edible" name="animal-edible" id="getedible">
+                        <label for="getcats">Anything that goes well on a grill. >:) (how cruel)</label>
+                    </p>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Assorted randommess</legend>
+                <div>
+                    <label for="gettemp">Approximate outside temperature (&deg;F):</label>
+                    <input type="range" name="temp" id="gettemp" min="30" max="110"
+                        list="templist"><br>
+                        <datalist id="templist">
+                            <option value="30"></option>
+                            <option value="50"></option>
+                            <option value="70"></option>
+                            <option value="90"></option>
+                            <option value="110"></option>
+                        </datalist>
+                    <label for="getbday">Date of birth:</label>
+                    <input type="date" id="getbday" name="birthdate"><br>
+                    <label for="getpassword">The <em>super-secret</em> (never guessable) password is:</label>
+                    <input type="password" name="password" id="getpassword"><br>
+                    <input type="hidden" name="hidden" value="This is most often useful for communicating state between forms">
+                    <p><label for="getcomments">Any comments:</label>
+                    <textarea name="comments" id="getcomments">Type anything... literally anything...</textarea></p>
+                </div>
+            </fieldset>
+            <input type="submit" value="Submit"><input type="reset" value="Reset">
+        </form>
+    </body>
+</html>
