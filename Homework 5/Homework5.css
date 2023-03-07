@@ -109,6 +109,9 @@ dl > dt, dd {
     padding-right: 2ex;
 }
 
+.genres > ul > li + ol, .genres > ul > li > ol{
+    list-style-type: upper-roman;
+}
 
 .recommendations {
     margin-left: auto;
@@ -121,6 +124,7 @@ dl > dt, dd {
     margin: 2ex;
     padding: 15px 30px 15px 30px;
     border-radius: 2ex;
+    color:rgb(224, 200, 146);
 }
 
 .quote {
