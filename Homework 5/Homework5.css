@@ -1,0 +1,130 @@
+body {
+    background-image: url('SeemlessBackground.jpg');
+    background-size: 100% 100%;
+    background-position: fixed;
+    text-align: center;
+    line-height: 100%;
+    color:aliceblue; /* Temporary Color */
+}
+
+table {
+    border-collapse: collapse; width: 75%;
+    border: 3px solid rgb(66, 51, 24);
+}
+
+th {
+    border: 2px solid rgb(66, 51, 24);
+    background-color: rgba(204, 155, 64, 0.637);
+    background-attachment: fixed;
+    color:rgb(66, 51, 24);
+}
+
+td {
+    border: .5px solid  rgb(66, 51, 24);
+    background-color: rgba(204, 155, 64, 0.637);
+    background-attachment: fixed;
+    font-weight: 1000;
+    color:rgb(66, 51, 24);
+}
+
+a {
+    color:rgb(224, 200, 146);
+}
+
+img {
+    width: 100px;
+    height: 100px;
+    filter: brightness(0);
+}
+
+h1 {
+    font-size: 40px;
+    padding-right: 20px;
+    line-height: 100%;
+    color:rgb(224, 200, 146);
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+h2 {
+    padding-top: 10px;
+    font-family:Arial, Helvetica, sans-serif;
+    color:rgb(224, 200, 146);
+}
+
+pre, p, li, dl{
+    font-family:Arial, Helvetica, sans-serif;
+    line-height: 150%;
+    color:rgb(66, 51, 24);
+    font-weight: bold;
+}
+
+p {
+    background-color: rgba(204, 155, 64, 0.637);
+    border-radius: 2ex;
+    margin-left: 60px;
+    margin-right: 60px;
+    padding: 15px 30px 15px 30px;
+}
+
+dl {
+    line-height: 150%;
+    background-color: rgba(204, 155, 64, 0.637);
+    border-radius: 2ex;
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+dl > dt, dd {
+    line-height: 150%;
+}
+
+.introduction {
+    background-color:rgba(204, 155, 64, 0.637);
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    margin-left: 60px;
+    margin-right: 60px;
+    padding: 15px 30px 15px 30px;
+    border-radius: 2ex;
+}
+
+.container {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 30px 0px 30px;
+    background-color: rgba(204, 155, 64, 0.637);
+    background-attachment: fixed;
+    border-radius: 2ex;
+    border: thick dotted rgb(66, 51, 24);
+}
+
+.interested, .genres {
+    display: table;
+    margin: 0 auto;
+    text-align: left;
+    line-height: 150%;
+    background-color: rgba(204, 155, 64, 0.637);
+    border-radius: 2ex;
+    padding-right: 2ex;
+}
+
+
+.recommendations {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.artwork {
+    background-color: rgba(204, 155, 64, 0.637);
+    border-radius: 2ex;
+    margin: 2ex;
+    padding: 15px 30px 15px 30px;
+    border-radius: 2ex;
+}
+
+.quote {
+    background-color: rgba(204, 155, 64, 0.637);
+    border-radius: 2ex;
+
+}
