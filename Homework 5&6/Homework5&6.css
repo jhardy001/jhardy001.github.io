@@ -1,10 +1,9 @@
 body {
     background-image: url('SeemlessBackground.jpg');
-    background-size: 100% 100%;
-    background-position: fixed;
+    background-size: auto 150%;
+    background-position: absolute;
     text-align: center;
     line-height: 100%;
-    color:aliceblue; /* Temporary Color */
 }
 
 table {
@@ -32,8 +31,8 @@ a {
 }
 
 img {
-    width: 100px;
-    height: 100px;
+    max-width: 100px;
+    max-height: 100px;
     filter: brightness(0);
 }
 
@@ -60,17 +59,9 @@ pre, p, li, dl{
 p {
     background-color: rgba(204, 155, 64, 0.637);
     border-radius: 2ex;
-    margin-left: 60px;
-    margin-right: 60px;
-    padding: 15px 30px 15px 30px;
-}
-
-dl {
-    line-height: 150%;
-    background-color: rgba(204, 155, 64, 0.637);
-    border-radius: 2ex;
-    margin-left: 60px;
-    margin-right: 60px;
+    margin-left: 4em;
+    margin-right: 4em;
+    padding: 0ex 2ex 0ex 2ex;
 }
 
 dl > dt, dd {
@@ -82,9 +73,9 @@ dl > dt, dd {
     align-items: center;
     display: inline-flex;
     justify-content: center;
-    margin-left: 60px;
-    margin-right: 60px;
-    padding: 15px 30px 15px 30px;
+    margin-left: 4em;
+    margin-right: 4em;
+    padding: 1ex 2ex 1ex 2ex;
     border-radius: 2ex;
 }
 
@@ -92,14 +83,14 @@ dl > dt, dd {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0px 30px 0px 30px;
+    padding: 0ex 2ex 0ex 2ex;
     background-color: rgba(204, 155, 64, 0.637);
     background-attachment: fixed;
     border-radius: 2ex;
     border: thick dotted rgb(66, 51, 24);
 }
 
-.interested, .genres {
+.interested, .genres, .definitions {
     display: table;
     margin: 0 auto;
     text-align: left;
@@ -107,6 +98,10 @@ dl > dt, dd {
     background-color: rgba(204, 155, 64, 0.637);
     border-radius: 2ex;
     padding-right: 2ex;
+}
+
+.definitions {
+    padding-left: 5%;
 }
 
 .genres > ul > li + ol, .genres > ul > li > ol{
@@ -122,7 +117,7 @@ dl > dt, dd {
     background-color: rgba(204, 155, 64, 0.637);
     border-radius: 2ex;
     margin: 2ex;
-    padding: 15px 30px 15px 30px;
+    padding: 1ex 2ex 1ex 2ex;
     border-radius: 2ex;
     color:rgb(224, 200, 146);
 }
@@ -130,5 +125,21 @@ dl > dt, dd {
 .quote {
     background-color: rgba(204, 155, 64, 0.637);
     border-radius: 2ex;
-
 }
+
+.firstfloat {
+    float: center;
+    position: relative;
+    background-color: rgb(204, 155, 64);
+    left:55ex;
+    bottom: -30ex;
+}
+
+.secondfloat {
+    float: left;
+    position: absolute;
+    margin-left: 100px;
+    margin-top:75px;
+    background-color: rgb(204, 155, 64);
+}
+
