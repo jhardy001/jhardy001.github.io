@@ -4,15 +4,15 @@
  * call the function.  The button used is passed to the function as buttonElt.
  */
 function insertPython(buttonElt) {
-    let contents = '<p>And now for something completely different...</p>';
-    if (buttonElt.innerHTML === "BOOM!") {
-        contents += '<img src="https://img.gifglobe.com/grabs/montypython/MontyPythonAndTheHolyGrail/gif/ZFb6uJozJJm2.gif" alt="Tim the Enchanter">';
+    let contents = '<p>Something different... blah blah blah...</p>';
+    if (buttonElt.innerHTML === "Mario time!") {
+        contents += '<img src="https://media1.giphy.com/media/ZdKa3AjRMS5vGZvxQW/giphy.gif" alt="MarioTime">';
     }
-    else if (buttonElt.innerHTML === "'Tis but a flesh wound!") {
-        contents += '<img src="https://i.gifer.com/LXdH.gif" alt="The Black Knight">';
+    else if (buttonElt.innerHTML === "Snake?") {
+        contents += '<img src="https://media.tenor.com/8z6raUxggBwAAAAC/snake-metal.gif" alt="Snake!">';
     }
     else {
-        contents += '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToVTTQJFG3IWh0uxjKxrNV39T05oEaWGSU2w&usqp=CAU" alt="Rude French soldier">';
+        contents += '<img src="https://media2.giphy.com/media/xUPOqo6E1XvWXwlCyQ/giphy.gif?cid=6c09b952swxo0bf9xsxnnkbx8os8ufrwcie5bydugo30sdc4&rid=giphy.gif&ct=g" alt="ThatsAll">';
     }
 
     let targetElt = document.getElementById('pythonTarget');
