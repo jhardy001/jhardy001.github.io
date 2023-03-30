@@ -43,7 +43,7 @@
 <body>
 	<h1>Homework 8</h1>
 
-	<form action="https://cs.converse.edu/CSC235/formecho.php" method="post" id="postform" onsubmit="return validForm(this);">
+	<form action="https://cs.converse.edu/CSC235/formecho.php" method="post" id="postform">
 		<fieldset>
 			<div class="inigo">&ldquo;Hello! My name is
 				<input name="nameblank" id="nameblank" required/>.<span class="flag"></span> You killed my
@@ -67,7 +67,7 @@
 					that apply):</label><span class="flag"></span>
 				<ul>
 					<li style="background-color: #9DC3D4"><input type="checkbox" name="Aquamarine" value="Aquamarine"
-							id="Aquamarine"  onchange="somethingChecked('colors');"/>
+							id="Aquamarine"  required onchange="somethingChecked('colors');"/>
 						<label for="Aquamarine">Aquamarine</label></li>
 					<li style="background-color: #F88F58"><input type="checkbox" name="Tangerine" value="Tangerine"
 							id="Tangerine" onchange="somethingChecked('colors');"/>
