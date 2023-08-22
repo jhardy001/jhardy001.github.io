@@ -13,21 +13,20 @@ function validForm(formElt) {
 function somethingChecked(parentID) {
     let parentElt = document.getElementById(parentID);
     let boxes = parentElt.querySelectorAll('input[type=checkbox]');
-    let flag = parentElt.querySelector('.flag');
-    console.log(flag);
+    //console.log(flag);
     let oneIsChecked = false;
     for (box of boxes) {
         //console.log(box);
         if (box.checked) {
             oneIsChecked = true;
+            // better to have valid on the checkbox than on the flag
+            box.classList.add('valid'); 
+        }
+        else {
+            box.classList.remove('valid');
         }
     }
-    if (oneIsChecked){
-        flag.classList.add('valid');
-    }
-    else {
-        flag.classList.remove('valid');
-    }
+    let flag = parentElt.querySelector('.flag');
     console.log(oneIsChecked);
     return oneIsChecked;   
 }

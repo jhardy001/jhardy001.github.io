@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Final Exam, CSC 235 Web Programming I, Spring 2023</title>
+
+    <script>
+      ////  JAVASCRIPT FOR QUESTIONS 1, 3, and 4 GOES IN THIS SCRIPT ELEMENT
+
+      //question 1
+      function showDegF(degC) {
+        document.getElementById('degrees_f').value = ((9/5)*degC+32).toString();
+      }
+
+      function showDegC(degF) {
+        document.getElementById('degrees_c').value = ((5/9)*degF-32).toString();
+      }
+
+      //question 3
+      function cGold(){
+        document.querySelector(".converse").classList.add("goldBG");
+      }
+
+      //question 4
+      function renameSchool(){
+        let newName = document.getElementById('newname').value;
+        document.querySelector('.sherman > td').innerText = newName;
+      }
+
+      ////  END JAVASCRIPT FOR QUESTIONS 1, 3, and 4
+    </script>
+
+    <style>
+      /* Given CSS.  DO NOT EDIT! */
+      :required:invalid + .flag::before { color: firebrick; content: '*'; }
+      :required:valid + .flag::before { color: green; content: '✓'; }
+      fieldset { border: none }
+
+      .colleges td { border-style: solid; border-color: silver;
+			  border-width: 2px }
+
+      .goldBG { background-color: rgb(244, 192, 23); }
+      
+      /* End given CSS.  DO NOT EDIT CSS ABOVE THIS LINE! */
+
+      /* Your CSS for Question 2 goes here */
+
+      /*question 2*/
+      .converse td {
+        border-style: solid;
+        border-color: rgb(70, 5, 135);
+        border-width: 2px;
+      }
+
+      .upstate td {
+        border-style: solid;
+        border-color: green;
+        border-width: 2px;
+      }
+
+      .wofford td {
+        border-style: solid;
+        border-color: black;
+        border-width: 2px;
+      }
+
+    </style>
+
+  </head>
+  <body>
+    <h1>Final Exam</h1>
+
+    <h2>Temperature conversions (question 1)</h2>
+
+    <form action="?" method="get">
+      <fieldset>
+	<label for="degrees_c">&deg;C: </label>
+	<input type="number" id="degrees_c" onchange="showDegF(this.value)"/>
+	<br />
+	<label for="degrees_f">&deg;F: </label>
+	<input type="number" id="degrees_f" onchange="showDegC(this.value)"/>
+      </fieldset>
+    </form>
+
+    <h2>Spartanburg-area colleges (questions 2-4)</h2>
+
+    <form action="?" method="get">
+      <fieldset>
+	<label for="newname">New name:</label>
+	<input type="text" name="newname" id="newname" required />
+	<span class="flag"></span><br />
+	<input type="button" id="converse-gold" value="Converse Gold" onclick="cGold()"/>
+	<input type="button" id="change-name" value="Change school name" onclick="renameSchool()" />
+      </fieldset>
+    </form>
+
+    <table class="colleges" id="college_table">
+      <tr><th>Institution</th><th>Address</th></tr>
+      <tr class="converse"><td>Converse University</td>
+	<td>580 E. Main St.<br />Spartanburg, SC 29302</td></tr>
+      <tr class="sherman"><td>Sherman College of Straight Chiropractic</td>
+	<td>2020 Springfield Rd.<br />Spartanburg, SC 29316</td></tr>
+      <tr class="scc"><td>Spartanburg Community College</td>
+	<td>P.O. Box 4386<br />Spartanburg, SC 29305</td></tr>
+      <tr class="smc"><td>Spartanburg Methodist College</td>
+	<td>1000 Powell Mill Rd.<br />Spartanburg, SC 29301</td></tr>
+      <tr class="upstate"><td>University of South Carolina Upstate</td>
+	<td>800 University Way<br />Spartanburg, SC 29303</td></tr>
+      <tr class="wofford"><td>Wofford College</td>
+	<td>429 N. Church St.<br />Spartanburg, SC 29303</td></tr>
+    </table>
+
+  </body>
+</html>
