@@ -1,2 +1,2 @@
 # jhardy001.github.io
-Converse University CSC 235
+Converse University Computer Science Portfolio
