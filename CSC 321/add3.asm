@@ -18,6 +18,8 @@ section .data                                   ; Initialized data segment, most
  Prompt1Length  EQU $-Prompt1
  Prompt2        db "Please enter a second integer: "
  Prompt2Length  EQU $-Prompt2
+ Prompt3        db "Please enter a third integer: "
+ Prompt3Length  EQU $-Prompt3
  Message        db "The sum is: "               ;    These have memory locations.
  MessageLength  EQU $-Message                   ; Address of this line ($) - address of Message
 
@@ -30,6 +32,7 @@ alignb 8
 
  Term1          resq 1                          ; First term of addition
  Term2          resq 1                          ; Second term of addition
+ Term3          resq 1                          ; Third term of addition
  Total          resq 1                          ; sum of the two terms
  StartTotal     resq 1                          ; Starting address of the output string
  InputSpace     resb MAX_INPUT_LENGTH + 2       ; Use for all input commands
@@ -140,6 +143,51 @@ while_R8_gt_0_2:
  jmp   while_R8_gt_0_2                          ; Jump back to the beginning of the while and do it again
 endwhile_R8_gt_0_2:                             ; End the loop
  mov   [REL Term2], eax                         ; Store the term
+
+ ;; Prompt for the third integer
+ sub   RSP, 32 + 8 + 8                          ; Shadow space + 5th parameter + align stack
+                                                ; to a multiple of 16 bytes (MS x64 calling convention)
+ mov   RCX, qword [REL StdOutHandle]            ; 1st parameter
+ lea   RDX, [REL Prompt3]                       ; 2nd parameter
+ mov   R8, Prompt3Length                        ; 3rd parameter
+ lea   R9, [REL BytesWritten]                   ; 4th parameter
+ mov   qword [RSP + 4 * 8], NULL                ; 5th parameter
+ call  WriteFile                                ; Output can be redirected to a file using >
+ add   RSP, 48                                  ; Remove the 48 bytes
+
+;; Read the third integer
+
+ sub   RSP, 32 + 8 + 8                          ; Shadow space + 5th parameter + align stack
+                                                ; to a multiple of 16 bytes (MS x64 calling convention)
+ mov   RCX, qword [REL StdInHandle]             ; 1st parameter
+ lea   RDX, [REL InputSpace]                    ; 2nd parameter
+ mov   R8, MAX_INPUT_LENGTH                     ; 3rd parameter
+ lea   R9, [REL BytesRead]                      ; 4th parameter
+ mov   qword [RSP + 4 * 8], NULL                ; 5th parameter
+ call  ReadFile                                 ; Output can be redirected to a file using >
+ add   RSP, 48                                  ; Remove the 48 bytes
+
+;; Convert the third integer string -> int
+ mov   EAX, 0                                   ; Clear EAX (where result will go)
+ lea   RSI, [REL InputSpace]                    ; Beginning of the string
+ mov   R8, [REL BytesRead]                      ; BytesRead -> R8
+ sub   R8, 2                                    ; Subtract 2 to exclude the CR/LF at the end
+ mov   R10, 10                                  ; Base 10; value in R10 to allow multiplying
+ ;; while R8 > 0
+while_R8_gt_0_2:
+ cmp   R8, 0                                    ; compare R8 to 0
+ je    endwhile_R8_gt_0_2                       ; if R8 <= 0, jump to the end of the loop
+
+ mov   cl, [RSI]                                ; Move one digit into CL
+ sub   ECX, ASCII_ZERO                          ; Char to numeric
+ mul   R10D                                     ; EAX *= 10 (previous digits)
+ add   eax, ecx                                 ; Add in the current digit
+ dec   R8                                       ; One less digit to handle
+ inc   RSI                                      ; Point RSI at the next digit
+
+ jmp   while_R8_gt_0_2                          ; Jump back to the beginning of the while and do it again
+endwhile_R8_gt_0_2:                             ; End the loop
+ mov   [REL Term3], eax                         ; Store the term
 
 ;; Find the sum
  add    eax, [REL Term1]                        ; Do the actual addition
