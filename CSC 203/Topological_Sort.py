@@ -1,5 +1,5 @@
 from pythonds3.graphs.adjacency_graph import Graph, Vertex
-from pythonds3.basic import Queue
+from typing import cast
 
 # This graph is directed and asymmetric.
 def add_1way_edge(g: Graph, v1: Vertex, v2: Vertex) -> None:
@@ -31,12 +31,13 @@ def print_graph(g: Graph) -> None:
             print(neighbor.get_key(), vertex.get_neighbor(neighbor), end='; ')
         print()
 
-def reset_graph(g: Graph) -> None:
-    for key in g.get_vertices():
-        v = g.get_vertex(key)
-        v.set_color('white')
-        v.set_distance = sys.maxsize
-        v.set_previous(None)
+def topologicalsort(g: Graph) -> None:
+    topolist = []
+    g.dfs()
+    topolist = sorted(g.get_vertices(), 
+                      key=lambda k: cast(Vertex, g.get_vertex(k)).get_closing_time(), 
+                      reverse=True)
+    return (topolist)
 
 # This is the main function.
 def main(args: list[str]) -> int:
@@ -44,20 +45,7 @@ def main(args: list[str]) -> int:
     assert len(g.get_vertices()) == 16
     assert len(g.get_edges()) == 14
     print_graph(g)
-
-    for start_key in g.get_vertices():
-        v_start = g.get_vertex(start_key)
-        g.dfs()
-        for end_key in g.get_vertices():
-            if end_key != start_key:
-                v_end = g.get_vertex(end_key)
-                if v_end.get_previous() != None:
-                    g.traverse(start_key, end_key)
-                else:
-                    print("No path from", start_key, "to",  end_key, ".")
-        reset_graph(g)
-
-    return 0
+    print (topologicalsort(g))
 
 if __name__ == '__main__':
     import sys

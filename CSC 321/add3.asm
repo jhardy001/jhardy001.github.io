@@ -174,9 +174,9 @@ endwhile_R8_gt_0_2:                             ; End the loop
  sub   R8, 2                                    ; Subtract 2 to exclude the CR/LF at the end
  mov   R10, 10                                  ; Base 10; value in R10 to allow multiplying
  ;; while R8 > 0
-while_R8_gt_0_2:
+while_R8_gt_0_3:
  cmp   R8, 0                                    ; compare R8 to 0
- je    endwhile_R8_gt_0_2                       ; if R8 <= 0, jump to the end of the loop
+ je    endwhile_R8_gt_0_3                       ; if R8 <= 0, jump to the end of the loop
 
  mov   cl, [RSI]                                ; Move one digit into CL
  sub   ECX, ASCII_ZERO                          ; Char to numeric
@@ -185,12 +185,13 @@ while_R8_gt_0_2:
  dec   R8                                       ; One less digit to handle
  inc   RSI                                      ; Point RSI at the next digit
 
- jmp   while_R8_gt_0_2                          ; Jump back to the beginning of the while and do it again
-endwhile_R8_gt_0_2:                             ; End the loop
+ jmp   while_R8_gt_0_3                          ; Jump back to the beginning of the while and do it again
+endwhile_R8_gt_0_3:                             ; End the loop
  mov   [REL Term3], eax                         ; Store the term
 
 ;; Find the sum
- add    eax, [REL Term1]                        ; Do the actual addition
+ add    eax, [REL Term1]                        ; Do the actual addition BUT with Term1
+ add    eax, [REL Term2]                        ; Do the actual addition BUT with Term2.
  mov    [REL Total], eax                        ; Store the sum
 
 ;; Print the label for the sum
