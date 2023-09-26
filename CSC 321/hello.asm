@@ -9,7 +9,7 @@ extern ExitProcess
 global Start                                    ; Export symbols. The entry point
 
 section .data                                   ; Initialized data segment, mostly used for constants
- Message        db "Hello, world!", 0Dh, 0Ah    ;    These have memory locations.
+ Message        db "Hello, world! My name is Jay Hardy.", 0Dh, 0Ah    ;    These have memory locations.
  MessageLength  EQU $-Message                   ; Address of this line ($) - address of Message
 
 section .bss                                    ; Uninitialized data segment
