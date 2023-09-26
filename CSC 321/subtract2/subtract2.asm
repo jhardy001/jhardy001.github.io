@@ -1,4 +1,4 @@
-; Read two numbers from the keyboard, add them, and display the result
+; Read two numbers from the keyboard, subtract them, and display the result
 NULL                EQU 0                       ; Constants, to be expanded by the preprocessor
 STD_OUTPUT_HANDLE   EQU -11                     ;   (no memory locations for these, just substituted into code)
 STD_INPUT_HANDLE    EQU -10
@@ -31,7 +31,7 @@ alignb 8
 
  Term1          resq 1                          ; First term of addition
  Term2          resq 1                          ; Second term of addition
- Total          resq 1                          ; sum of the two terms
+ Total          resq 1                          ; Difference of the two terms
  StartTotal     resq 1                          ; Starting address of the output string
  InputSpace     resb MAX_INPUT_LENGTH + 2       ; Use for all input commands
 
@@ -100,7 +100,7 @@ Start:
  ;; while R8 > 0
 while_R8_gt_0_1:
  cmp   R8, 0                                    ; compare R8 to 0
- je    endwhile_R8_gt_0_1                         ; if R8 <= 0, jump to the end of the loop
+ je    endwhile_R8_gt_0_1                       ; if R8 <= 0, jump to the end of the loop
 
  mov   cl, [RSI]                                ; Move one digit into CL
  sub   ECX, ASCII_ZERO                          ; Char to numeric
@@ -109,8 +109,8 @@ while_R8_gt_0_1:
  dec   R8                                       ; One less digit to handle
  inc   RSI                                      ; Point RSI at the next digit
 
- jmp   while_R8_gt_0_1                            ; Jump back to the beginning of the while and do it again
-endwhile_R8_gt_0_1:                               ; End the loop
+ jmp   while_R8_gt_0_1                          ; Jump back to the beginning of the while and do it again
+endwhile_R8_gt_0_1:                             ; End the loop
  imul  R9D                                      ; Result *will* fit in EAX
  mov   [REL Term1], eax                         ; Store the term
 
@@ -177,9 +177,9 @@ endwhile_R8_gt_0_2:                             ; End the loop
  mov   [REL Term2], eax                         ; Store the term
 
 ;; Find the sum
- mov    eax, [REL Term1]
- sub    eax, [REL Term2]                        ; Do the actual addition BUT with Term1
- mov    [REL Total], eax                        ; Store the sum
+ mov    eax, [REL Term1]                        ; Bring in Term 1
+ sub    eax, [REL Term2]                        ; Do the actual difference BUT with Term 2 from Term 1
+ mov    [REL Total], eax                        ; Store the difference
 
 ;; Print the label for the sum
  sub   RSP, 32 + 8 + 8                          ; Shadow space + 5th parameter + align stack
