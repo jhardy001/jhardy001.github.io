@@ -1,11 +1,9 @@
 # Empty unit-testing class
-# Made with Peter Brown, 9/28/23
+# Peter Brown, 26 Jan 2017
 
 import unittest
 from typing import cast
 from AVLTree import AVLTree
-
-# --------------------- TESTING BEGINS HERE!!!!!!!!!!!  --------------------------#
 
 class TestAVLTree(unittest.TestCase):
     # All methods whose names start with "test"
@@ -13,6 +11,10 @@ class TestAVLTree(unittest.TestCase):
     def setUp(self) -> None:
         self._single = AVLTree[str]('coffee needed')
 
+        self._tree = AVLTree[int](4)
+        self._tree.put(1)
+
+        # No rotations needed
         self._tree2 = AVLTree[int](5)
         self._tree2.put(1)
         self._tree2.put(11)
@@ -25,15 +27,18 @@ class TestAVLTree(unittest.TestCase):
     def testBalance(self) -> None:
         self.assertEqual(self._single.balance(), 0)
 
+        self.assertEqual(self._tree.balance(), 1)
+        self.assertEqual(self._tree.getLeftChild().balance(), 0)
+
+        # print(self._tree2)
         self.assertEqual(self._tree2.balance(), -1)
         self.assertEqual(cast(AVLTree[int], self._tree2.getLeftChild()).balance(), 0)
+        self.assertEqual(cast(AVLTree[int], self._tree2.getRightChild()).balance(), -1)
         self.assertEqual(cast(AVLTree[int], self._tree2.getLeftChild().getLeftChild()).balance(), 0)
         self.assertEqual(cast(AVLTree[int], self._tree2.getLeftChild().getRightChild()).balance(), 0)
-        self.assertEqual(cast(AVLTree[int], self._tree2.getRightChild()).balance(), -1)
         self.assertEqual(cast(AVLTree[int], self._tree2.getRightChild().getLeftChild()).balance(), 0)
         self.assertEqual(cast(AVLTree[int], self._tree2.getRightChild().getRightChild()).balance(), -1)
         self.assertEqual(cast(AVLTree[int], self._tree2.getRightChild().getRightChild().getRightChild()).balance(), 0)
-
 
 if __name__ == '__main__':
     unittest.main()
