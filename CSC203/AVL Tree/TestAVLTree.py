@@ -26,7 +26,6 @@ class TestAVLTree(unittest.TestCase):
 
     def testBalance(self) -> None:
         self.assertEqual(self._single.balance(), 0)
-
         self.assertEqual(self._tree.balance(), 1)
         self.assertEqual(self._tree.getLeftChild().balance(), 0)
 
