@@ -172,7 +172,40 @@ int2str:
 ;; Locals are BytesWritten, StringSpace, BytesRead
 ;; Can return it in eax and we're good.
 ReadInt:
+    ;;Entry code
+    ;;Copying parameters into shadow space.
+    mov [rsp+8], rcx ; Parameter 1 (output)
+    mov [rsp+16], rdx ; Parameter 2 (input)
+    mov [rsp+24], r8 ; Parameter 3 (address)
+    mov [rsp+32], r9 ; Paramter 4 (length)
+    ;; Make space for local paramters on the stack.
+    sub rsp, 8*((MAX_INPUT_LENGTH + 2) + 2 + 1)
+    ;; Variable addresses
+    ;;BytesRead: [esp]
+    ;;BytesWritten: [esp + 8]
+    ;;StringSpace: [esp + 16]
+    ;;Return address: [esp + 16+(8*13)
+    ;;Output handle: [esp + 128]
+    ;;Input handle: [esp + 136]
+    ;;Address: [esp + 144]
+    ;;Prompt length: [esp + 152]
 
+    ;;Prompt
+    mov rcx, qword [rsp + 128]  ;Parameter 1: output handle
+    mov rdx, qword [rsp + 144]  ;Parameter 2: address of prompt
+    mov r8, qword [rsp + 152]   ;Parameter 3: length of prompt
+    mov r9, rsp                ;Parameter 4: address of bytes written
+    add r9, 8
+    sub RSP, 32 + 8 + 8
+    mov qword [RSP + 4 * 8], NULL ;Paramter 5
+    call WriteFile
+    add RSP, 48
+
+    ;;Exit code
+    ;;Begone local paramters!!!
+    add rsp, 8*((MAX_INPUT_LENGTH + 2) + 2 + 1)
+    ;;Ensure that result is in EAX, then 
+    ret
 
 Start:
  sub   RSP, 8                                   ; Align the stack to a multiple of 16 bytes
@@ -191,27 +224,25 @@ Start:
  mov   qword [REL StdInHandle], RAX
  add   RSP, 32                                  ; Remove the 32 bytes
 
- ;; Prompt for X
- sub   RSP, 32 + 8 + 8                          ; Shadow space + 5th parameter + align stack
-                                                ; to a multiple of 16 bytes (MS x64 calling convention)
- mov   RCX, qword [REL StdOutHandle]            ; 1st parameter
- lea   RDX, [REL Prompt1]                       ; 2nd parameter
- mov   R8, Prompt1Length                        ; 3rd parameter
- lea   R9, [REL BytesWritten]                   ; 4th parameter
- mov   qword [RSP + 4 * 8], NULL                ; 5th parameter
- call  WriteFile                                ; Output can be redirected to a file using >
- add   RSP, 48                                  ; Remove the 48 bytes
+;  ;; Prompt for X
+;  sub   RSP, 32 + 8 + 8                          ; Shadow space + 5th parameter + align stack
+;                                                 ; to a multiple of 16 bytes (MS x64 calling convention)
+;  mov   RCX, qword [REL StdOutHandle]            ; 1st parameter
+;  lea   RDX, [REL Prompt1]                       ; 2nd parameter
+;  mov   R8, Prompt1Length                        ; 3rd parameter
+;  lea   R9, [REL BytesWritten]                   ; 4th parameter
+;  mov   qword [RSP + 4 * 8], NULL                ; 5th parameter
+;  call  WriteFile                                ; Output can be redirected to a file using >
+;  add   RSP, 48                                  ; Remove the 48 bytes
 
 ;; Read X
- sub   RSP, 32 + 8 + 8                          ; Shadow space + 5th parameter + align stack
-                                                ; to a multiple of 16 bytes (MS x64 calling convention)
- mov   RCX, qword [REL StdInHandle]             ; 1st parameter
- lea   RDX, [REL StringSpace]                    ; 2nd parameter
- mov   R8, MAX_INPUT_LENGTH                     ; 3rd parameter
- lea   R9, [REL BytesRead]                      ; 4th parameter
- mov   qword [RSP + 4 * 8], NULL                ; 5th parameter
- call  ReadFile                                 ; Output can be redirected to a file using >
- add   RSP, 48                                  ; Remove the 48 bytes
+ sub   rsp, 32
+ mov rcx, qword [REL StdOutHandle]              ; 1st parameter
+ mov rdx, qword [REL StdInHandle]               ; 2nd parameter
+ lea r8, [REL Prompt1]                          ; 3rd parameter
+ mov r9, Prompt1Length                          ; 4th parameter
+ call ReadInt
+ add rsp, 32
 
 ;; Convert X string -> int
  sub   RSP, 32                                  ; Shadow space

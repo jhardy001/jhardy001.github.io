@@ -1,4 +1,5 @@
 ; Read two numbers from the keyboard, add them, and display the result
+;; !!!!!!!!!!    DISCLAIMER: CODE NOT FINISHED YET       !!!!!!!!!!
 NULL                EQU 0                       ; Constants, to be expanded by the preprocessor
 STD_OUTPUT_HANDLE   EQU -11                     ;   (no memory locations for these, just substituted into code)
 STD_INPUT_HANDLE    EQU -10
