@@ -49,6 +49,59 @@ class AVLTree(BST[T]):
         return result
     
     # --------------- MUTATOR METHODS ---------------------
+    def _rotateLeft(self) -> 'AVLTree[T]':
+        """Perform a left rotation on the subtree rooted at self."""
+        assert self.hasRightChild()
+
+        newRoot = cast(AVLTree[T], self.getRightChild())
+        if not self.isRoot():
+            # Set up...
+            allParent = cast(AVLTree[T], self._parent)
+            # Promote the new root.
+            newRoot = cast(AVLTree[T], self.getRightChild())
+            newRoot._parent = allParent
+            if self is allParent.getLeftChild():
+                allParent._leftChild = newRoot
+            else:
+                allParent._rightChild = newRoot
+        if newRoot.hasLeftChild():
+            self._right = newRoot.getLeftChild()
+            self._right._parent = self
+        newRoot._leftChild = self
+        self._parent = newRoot
+        # Update the balance factors.
+        self._balance = self.balance() + 1 - min(newRoot.balance(), 0)
+        newRoot._balance = self.balance() + 1 + max(self.balance(), 0)
+        
+        # In case self *was* a root before, return newRoot anyways.
+        return newRoot
+    
+    def _rotateLeft(self) -> 'AVLTree[T]':
+        """Perform a left rotation on the subtree rooted at self."""
+        assert self.hasLeftChild()
+
+        newRoot = cast(AVLTree[T], self.getLeftChild())
+        if not self.isRoot():
+            # Set up...
+            allParent = cast(AVLTree[T], self._parent)
+            # Promote the new root.
+            newRoot = cast(AVLTree[T], self.getLeftChild())
+            newRoot._parent = allParent
+            if self is allParent.getRightChild():
+                allParent._rightChild = newRoot
+            else:
+                allParent._leftChild = newRoot
+        if newRoot.hasRightChild():
+            self._right = newRoot.getRightChild()
+            self._right._parent = self
+        newRoot._rightChild = self
+        self._parent = newRoot
+        # Update the balance factors.
+        self._balance = self.balance() + 1 - max(newRoot.balance(), 0)
+        newRoot._balance = self.balance() + 1 + min(self.balance(), 0)
+        
+        # In case self *was* a root before, return newRoot anyways.
+        return newRoot
 
     def _updateBalance(self) -> None:
         """Update the balance factor, running up the tree to do so."""

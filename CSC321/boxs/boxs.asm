@@ -205,51 +205,6 @@ endwhile_R8_gt_0_3:                             ; End the loop
  mul dword [REL width]
  mov [REL Volumn], eax
 
-;; Print the label for the volumn
- sub   RSP, 32 + 8 + 8                          ; Shadow space + 5th parameter + align stack
-                                                ; to a multiple of 16 bytes (MS x64 calling convention)
- mov   RCX, qword [REL StdOutHandle]            ; 1st parameter
- lea   RDX, [REL MessageVolumn]                 ; 2nd parameter
- mov   R8, MessageVolumnLength                  ; 3rd parameter
- lea   R9, [REL BytesWritten]                   ; 4th parameter
- mov   qword [RSP + 4 * 8], NULL                ; 5th parameter
- call  WriteFile                                ; Output can be redirected to a file using >
- add   RSP, 48                                  ; Remove the 48 bytes
-
-;; Convert the volumn to a string
- mov    r8, 0                                   ; Clear byte count
- lea    rdi, [REL InputSpace + MAX_INPUT_LENGTH - 1] ; Point to last digit
- mov    [rdi+1], byte 0Dh                       ; Carriage return
- mov    [rdi+2], byte 0Ah                       ; Line feed
- add    r8, 2                                   ; Two bytes already there
- mov    eax, [REL Volumn]                  ; EAX <- Surface Area
- mov    r10d, 0Ah                               ; R10D <- 10, for division
-
-Start_loop_integer_to_string:
- div    r10d                                    ; EAX <- EAX // 10, EDX <- EAX % 10
- add    dl, ASCII_ZERO                          ; quantity to digit
- mov    [rdi], dl                               ; Store the digit
- mov    edx, 0                                  ; Clear EDX, so the div works
- inc    r8                                      ; Another byte
- dec    rdi                                     ; Move RDI back to the next space
- cmp    eax, 0
- jg     Start_loop_integer_to_string                ; Back to the beginning of the loop
-Store_the_result:
- inc    rdi                                     ; Last decrement was bogus
- mov    [REL StartVolumn], rdi                   ; Store the starting address of the string
- mov    [REL BytesRead], r8                     ; Store the length of the total string
-
-;; Print the volumn itself
- sub   RSP, 32 + 8 + 8                          ; Shadow space + 5th parameter + align stack
-                                                ; to a multiple of 16 bytes (MS x64 calling convention)
- mov   RCX, qword [REL StdOutHandle]            ; 1st parameter
- mov   RDX, [REL StartVolumn]                    ; 2nd parameter; mov not lea!
- mov   R8, [REL BytesRead]                      ; 3rd parameter
- lea   R9, [REL BytesWritten]                   ; 4th parameter
- mov   qword [RSP + 4 * 8], NULL                ; 5th parameter
- call  WriteFile                                ; Output can be redirected to a file using >
- add   RSP, 48                                  ; Remove the 48 bytes
-
 ;; Find the surface area
  mov    r8d, 2
  mov    eax, [REL length]

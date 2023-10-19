@@ -16,6 +16,10 @@ class BST(BinTree[T]):
         if self.hasRightChild():
             valid = (valid and self.value() < self.getRightChild().value() # type: ignore
                     and self.getRightChild()._invariant())
+        if not self.isRoot():
+            parent: BST[T] = cast(BST(T), self.getParent())
+            if self.value() < parent.value():
+                valid = (valid and parent.hasLeftChild() and self is parent.getLeftChild())
         return valid
     
     def __init__(self, value: T):
