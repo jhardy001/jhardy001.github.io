@@ -35,5 +35,5 @@ I have worked individually and in teams. Some of the skills I am familiar with i
 ●	Operating Systems Security\
 ●	Web Development
 
-[Connect with me on LinkedIn!](https://www.google.com "Jay's LinkedIn")\
-[Visit my Handshake profile!](https://www.google.com "Jay's Handshake")
+[Connect with me on LinkedIn!](https://www.linkedin.com/in/jh-jhardy/ "Jay's LinkedIn")\
+[Visit my Handshake profile!](https://app.joinhandshake.com/stu/users/51023559 "Jay's Handshake")
