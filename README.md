@@ -1,4 +1,4 @@
-# Jay Hardy
+# Jennifer Hardy
 ## :star: Python | Java/JavaScript | HTML/CSS | Assembly :star:
 
 
