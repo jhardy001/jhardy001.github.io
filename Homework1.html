@@ -7,14 +7,20 @@
         </title>
     </head>
     <body>
-        <div id="pythonTarget">
-            <form><button onclick="insertPython(this);">BOOM!</button><br>
-            <button onclick="insertPython(this);">'Tis but a flesh wound!</button><br>
-            <button onclick="insertPython(this);">Go away or I shall taunt you for a second time!</button>
-        </form>
-        </div>
+        <script>
+            function insertList() {
+                let parentElt = document.getElementById('listTarget');
+                let contents = '<h2>Super Mario Characters</h2>';
+                contents += '<ol><li>Mario</li>';
+                contents += '<li>Luigi</li>';
+                contents += '<li>Yoshi</ol>';
+                let dropdown = '<select><option>Peach</option><option>Wario</option><option>Bowser</option></select>'
+                parentElt.innerHTML = contents + parentElt.innerHTML + dropdown;
+                document.getElementById("button").disabled=true;
+            }
+        </script>
         <div id="listTarget">
-            <form><button onclick="insertList();">Click for list</button></form>
+            <form><input id = 'button' type='button' value="Click me!" onclick="insertList();"></form>
         </div>
     </body>
 </html>
