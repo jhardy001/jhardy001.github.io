@@ -13,11 +13,17 @@
                 let contents = '<h2>Super Mario Characters</h2>';
                 contents += '<ol><li>Mario</li>';
                 contents += '<li>Luigi</li>';
-                contents += '<li>Yoshi</ol>';
-                let dropdown = '<select><option>Peach</option><option>Wario</option><option>Bowser</option></select>'
+                contents += '<li id="thirdOption">Yoshi</li></ol>';
+                let dropdown = '<select id="itemSelection" onchange="doChange()"><option value="Peach">Peach</option><option value="Wario">Wario</option><option value="Bowser">Bowser</option></select>'
                 parentElt.innerHTML = contents + parentElt.innerHTML + dropdown;
                 document.getElementById("button").disabled=true;
             }
+
+            function doChange(){
+                let selection = document.querySelector('#itemSelection').value
+                
+            }
+
         </script>
         <div id="listTarget">
             <form><input id = 'button' type='button' value="Click me!" onclick="insertList();"></form>
