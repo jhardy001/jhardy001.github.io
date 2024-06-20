@@ -22,17 +22,22 @@
             }
 
             async function getFireStations() {
-                let url = `file:///C:/Users/candy/Documents/Coding/jhardy001.github.io/GSP-Fire-Stations.json`
+                let url = `GSP-Fire-Stations.json`
                 const response = await fetch(url);
                 const json = await response.json();
-                
+                console.log(json);
+                return insertFireStations(json)
+
             }
 
-            function insertFireStations() {
+            function insertFireStations(firestations) {
                 const targetElt = document.getElementById('firestations_target');
                 targetElt.innerHTML = '';
                 const tableElt = document.createElement('table');
-            }
+                tableElt.appendChild(makeAndFillElt('caption', `Fire Stations`))
+                tableElt.appendChild(makeAndFillTableRow('th', ['Longitude', 'Latitude', 'Name', 'Address']));
+                }
+
         </script>
     </head>
     <body>
