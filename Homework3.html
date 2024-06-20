@@ -36,6 +36,11 @@
                 const tableElt = document.createElement('table');
                 tableElt.appendChild(makeAndFillElt('caption', `Fire Stations`))
                 tableElt.appendChild(makeAndFillTableRow('th', ['Longitude', 'Latitude', 'Name', 'Address']));
+                for (const station of firestations){
+                    tableElt.appendChild(makeAndFillTableRow('td', [station.longitude, station.latitude, station.name, station.address]))
+                }
+
+                targetElt.appendChild(tableElt)
                 }
 
         </script>
