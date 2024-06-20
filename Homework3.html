@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>
+            Homework 3
+        </title>
+        <script>
+
+            function makeAndFillElt(tag, contents) {
+                const elt = document.createElement(tag);
+                elt.innerHTML = contents;
+                return elt;
+            }
+
+            function makeAndFillTableRow(celltag, values) {
+                const tr = document.createElement('tr');
+                for (const val of values) {
+                    tr.appendChild(makeAndFillElt(celltag, val));
+                }
+                return tr;
+            }
+
+            async function getFireStations() {
+                let url = `file:///C:/Users/candy/Documents/Coding/jhardy001.github.io/GSP-Fire-Stations.json`
+                const response = await fetch(url);
+                const json = await response.json();
+                
+            }
+
+            function insertFireStations() {
+                const targetElt = document.getElementById('firestations_target');
+                targetElt.innerHTML = '';
+                const tableElt = document.createElement('table');
+            }
+        </script>
+    </head>
+    <body>
+        <form action="."  onsubmit="return false;">
+            <button type="button" onclick="getFireStations();">Get fire stations.</button>
+            <div id="firestations_target"></div>
+        </form>
+    </body>
+</html>

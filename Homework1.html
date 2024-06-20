@@ -14,14 +14,27 @@
                 contents += '<ol><li>Mario</li>';
                 contents += '<li>Luigi</li>';
                 contents += '<li id="thirdOption">Yoshi</li></ol>';
-                let dropdown = '<select id="itemSelection" onchange="doChange()"><option value="Peach">Peach</option><option value="Wario">Wario</option><option value="Bowser">Bowser</option></select>'
-                parentElt.innerHTML = contents + parentElt.innerHTML + dropdown;
+                //let dropdown = '<select id="itemSelection" onchange="doChange()"><option value="Peach">Peach</option><option value="Wario">Wario</option><option value="Bowser">Bowser</option></select>'
+                parentElt.innerHTML = contents + parentElt.innerHTML; // + dropdown;
+                let dropdown = document.createElement('select');
+                dropdown.id = 'itemSelection';
+                for (val of ['Peach', 'Wario', 'Bowser']) {
+                    let opt = document.createElement('option');
+                    opt.value = val;
+                    opt.innerText = val;
+                    dropdown.appendChild(opt)
+                }
+                dropdown.addEventListener('change', doChange);
+                document.querySelector('form').appendChild(document.createElement('br'));
+                document.querySelector('form').appendChild(dropdown);
+
                 document.getElementById("button").disabled=true;
             }
 
             function doChange(){
-                let selection = document.querySelector('#itemSelection').value
-                
+                let selection = document.querySelector('#itemSelection').value;
+                //console.log(selection);
+                document.getElementById('thirdOption').innerText = selection;                
             }
 
         </script>
