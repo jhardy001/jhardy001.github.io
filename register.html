@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Register for courses</title>
+        <link rel="stylesheet" href="validform.css">
+        <script src="utilities.js"></script>
+        <script src="register.js"></script>
+    </head>
+    <body onload="initialize();">
+        <h1>Register for courses</h1>
+        <form id="addform" action="." onsubmit="return false;">
+            <label for="prefix_dropdown">Prefix:</label>
+            <select id="prefix_dropdown"></select><br>
+            <label for="timeslot_dropdown">Meeting time:</label>
+            <select id="timeslot_dropdown"></select><br>
+            <label for="course_dropdown">Course:</label>
+            <select id="course_dropdown" disabled required onchange="enableAddButton()">
+                <option value="">—Choose a course—</option>
+            </select><span class="flag"></span><br>
+            <button type="button" id="addCourseButton" disabled>Add course</button>
+        </form>
+        <div>
+            <table>
+                <caption style="font-weight: bold; font-size: 120%">Schedule:</caption>
+                <thead>
+                    <tr><th></th><th>Course code</th><th>Course name</th><th>Faculty</th><th>Seats</th><th>Meets</th><th>Credits</th></tr>
+                </thead>
+                <tbody id="item_display">
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
